@@ -75,3 +75,30 @@ Epoch 0:   0%|        | 0/31 [00:00<?, ?it/s
 ```
 python eval_testset.py --csv data/testset.csv --collection_dir data/collection --output_dir data/experiments/new_model_test --ckpt_path=logs/enhance-cryoem-map/vuf1k5if/checkpoints/last.ckpt
 ```
+
+# Results
+The per-map results for various metrics discussed in manuscript is available in `results/` directory in the repo.
+
+```
+results/
+    cryoten_half_map1_map_model_validation.csv - The model-map validation scores of CryoTEN enhanced deposited half maps from our test set. (Only one of the half-map pair is evaluated)
+    cryoten_primary_maps_map_model_validation.csv - The model-map validation scores of CryoTEN enhanced deposited primary maps from our test set.
+    deepemhancer_primary_maps_map_model_validation.csv - The model-map validation scores of DeepEMhancer enhanced deposited primary maps from our test set.
+    deposited_half_map1_map_model_validation.csv - The model-map validation scores of experimental deposited half maps from our test set. (Only one of the half-map pair is evaluated)
+    deposited_primary_maps_map_model_validation.csv - The model-map validation scores of experimental deposited primary maps from our test set.
+    emready_primary_maps_map_model_validation.csv - The model-map validation scores of EMReady enhanced deposited primary maps from our test set.
+    structure_modelling_comparison.csv - Contains the sequence match and residue coverage percentages of models built for chains in deposited maps and CryoTEN enhanced maps.
+```
+
+# Cite
+@article {Selvaraj2024.09.06.611715,
+	author = {Selvaraj, Joel and Wang, Liguo and Cheng, Jianlin},
+	title = {CryoTEN: Efficiently Enhancing Cryo-EM Density Maps Using Transformers},
+	elocation-id = {2024.09.06.611715},
+	year = {2024},
+	doi = {10.1101/2024.09.06.611715},
+	publisher = {Cold Spring Harbor Laboratory},
+	URL = {https://www.biorxiv.org/content/early/2024/09/11/2024.09.06.611715},
+	eprint = {https://www.biorxiv.org/content/early/2024/09/11/2024.09.06.611715.full.pdf},
+	journal = {bioRxiv}
+}
