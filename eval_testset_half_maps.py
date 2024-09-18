@@ -28,7 +28,7 @@ if __name__ == "__main__":
             print("Processing EMD", emdb_id)
             emdb_output_dir = os.path.join(output_dir, "emd_"+emdb_id)
             os.makedirs(emdb_output_dir, exist_ok=True)
-            output_map_path = os.path.join(emdb_output_dir, "cryosr_generated.mrc")
+            output_map_path = os.path.join(emdb_output_dir, "cryoten_generated.mrc")
 
             result = subprocess.run(
                 [

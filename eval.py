@@ -133,7 +133,7 @@ if __name__ == "__main__":
         print("==> Spliting map into blocks")
         prepare_input(input_map_file_path, temp_input_dir)
 
-        print("==> Generate output blocks using CryoSR")
+        print("==> Generate output blocks using CryoTEN")
         result = subprocess.run(
             [
                 "python3",
