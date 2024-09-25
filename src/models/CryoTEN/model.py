@@ -37,7 +37,6 @@ class CryoTENLitModule(LightningModule):
 
     def training_step(self, batch: Any, batch_idx: int):
         x, y, emd_id_list_batch = batch
-        print("Processing Batch ID", batch_idx)
         
         preds = self.forward(x)
 
