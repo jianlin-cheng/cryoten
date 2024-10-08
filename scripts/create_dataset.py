@@ -94,8 +94,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     csv_file = os.path.abspath(args.csv)
-    collection_dir = args.collection_dir
-    collection_dir = os.path.abspath(args.collection_dir)set_dir
+    collection_dir = os.path.abspath(args.collection_dir)
 
     map_list = pd.read_csv(csv_file)
 
