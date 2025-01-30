@@ -10,7 +10,7 @@ data:
     dataset_dir: ${paths.dataset_dir}
     train_max_samples: 0
     val_max_samples: 0
-    batch_size: 4
+    batch_size: 32
     num_workers: 8
 
 model:
@@ -27,7 +27,7 @@ model:
       init_args:
         mode: min
         factor: 0.5
-        patience: 2
+        patience: 4
         min_lr: 0.00001
 
     net:
@@ -51,12 +51,12 @@ trainer:
   strategy: auto
   devices: -1
   num_nodes: 1
-  max_epochs: 300
+  max_epochs: 1000
   min_epochs: 1
-  check_val_every_n_epoch: 5
+  val_check_interval: 0.25
   num_sanity_val_steps: 0
   log_every_n_steps: 10
-  deterministic: false
+  deterministic: true
   detect_anomaly: false
   sync_batchnorm: true
   default_root_dir: null

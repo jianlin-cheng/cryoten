@@ -54,7 +54,7 @@ def collect_half_maps(map, collection_dir):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser("collect_half_maps")
-    parser.add_argument("--csv", help="csv file with Entry ID,EMDB Map,split entries", type=str, required=True)
+    parser.add_argument("--csv", help="csv file with Entry ID,EMDB Map,split entries", type=str, default="data/testset_half_maps.csv")
     parser.add_argument("--collection_dir", help="path to the collection directory", type=str, default="data/collection")
 
     args = parser.parse_args()

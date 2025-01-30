@@ -84,6 +84,6 @@ class CryoTENLitModule(LightningModule):
                 "monitor": "val/loss",
                 "interval": "epoch",
                 "strict": True,
-                "frequency": 6,
+                "frequency": 1,
             },
         }

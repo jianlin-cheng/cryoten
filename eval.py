@@ -14,6 +14,7 @@ import shutil
 from iotbx.data_manager import DataManager
 from cctbx import uctbx
 import iotbx.mrcfile as iotbxmrcfile
+import sys
 
 emp = empatches.EMPatches()
 
@@ -134,9 +135,10 @@ if __name__ == "__main__":
         prepare_input(input_map_file_path, temp_input_dir)
 
         print("==> Generate output blocks using CryoTEN")
+        python_path = sys.executable
         result = subprocess.run(
             [
-                "python3",
+                python_path,
                 "main.py",
                 "predict",
                 "--config="+config,

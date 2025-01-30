@@ -608,11 +608,12 @@ def generate_simulated_map(emdb_id, pdb_file_path, simulated_map_file_path, meta
         positions = []
         atom_nums = []
         for atom in structure.get_atoms():
-            atom_string = atom.get_name()[0]
-            if atom_string in ["C", "N", "O", "S"]: # Only heavy atoms
-                at = rdchem.Atom(atom_string)
-                atom_nums.append(at.GetAtomicNum())
-                positions.append(atom.get_coord())
+            atom_string = atom.element.capitalize()
+            # if atom_string in ["C", "N", "O", "S"]: # Only heavy atoms
+            # include all atoms
+            at = rdchem.Atom(atom_string)
+            atom_nums.append(at.GetAtomicNum())
+            positions.append(atom.get_coord())
         positions = torch.tensor(np.array(positions), device=torch.device(device))
         atom_type = torch.tensor(np.array(atom_nums), device=torch.device(device))
         # print("EMDB:", emdb_id,". Num of Atoms:", len(positions))
@@ -795,12 +796,6 @@ def split_input_and_target_map_into_blocks(emdb_id, cryoem_mrc_file_path, simula
     input_block_filepath = None
     target_block_filepath = None
     try:
-        with mrcfile.open(cryoem_mrc_file_path) as mrc:
-            input_array = np.copy(mrc.data)
-        
-        with mrcfile.open(simulated_mrc_file_path) as mrc:
-            target_array = np.copy(mrc.data)
-        
         # since block_indices_file is saved only after all the blocks are saved, 
         # if this file exist, then it means all blocks are processed for this EMDB ID.
         # so we can skip it.
@@ -810,6 +805,12 @@ def split_input_and_target_map_into_blocks(emdb_id, cryoem_mrc_file_path, simula
                     return True
                 else:
                     os.remove(block_indices_file_path)
+
+        with mrcfile.open(cryoem_mrc_file_path) as mrc:
+            input_array = np.copy(mrc.data)
+        
+        with mrcfile.open(simulated_mrc_file_path) as mrc:
+            target_array = np.copy(mrc.data)
 
         input_blocks, input_indices  = emp.extract_patches(input_array, patchsize=block_size, stride=stride_size, vox=True)
         target_blocks, target_indices  = emp.extract_patches(target_array, patchsize=block_size, stride=stride_size, vox=True)

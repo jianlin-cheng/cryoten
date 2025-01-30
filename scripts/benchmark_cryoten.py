@@ -3,19 +3,21 @@ import subprocess
 import pandas as pd
 import numpy as np
 from datetime import datetime
+import sys
 
 collection_dir = "data/collection"
 csv_file = "data/testset_benchmark.csv"
-output_csv_file = "data/experiments/benchmark/cryoten_benchmark_sample.csv"
-output_dir = "data/experiments/benchmark/cryoten_sample"
+output_csv_file = "data/experiments/benchmark/cryoten_benchmark.csv"
+output_dir = "data/experiments/benchmark/cryoten"
 batch_size = 40
 
 def run_cryoten(input_map, output_map, batch_size):
     try:
         start = datetime.now()
+        python_path = sys.executable
         result = subprocess.run(
             [
-                "python3",
+                python_path,
                 "eval.py",
                 input_map,
                 output_map,

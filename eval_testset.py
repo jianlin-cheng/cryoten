@@ -2,10 +2,11 @@ import os
 import subprocess
 import pandas as pd
 import argparse
+import sys
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser("eval_testset")
-    parser.add_argument("--csv", help="csv file with Entry ID,EMDB Map,split entries", type=str, required=True)
+    parser.add_argument("--csv", help="csv file with Entry ID,EMDB Map,split entries", default="data/testset.csv", type=str)
     parser.add_argument("--collection_dir", help="path to data collection", default="data/collection", type=str)
     parser.add_argument("--output_dir", help="path to store the generated map", default="data/experiments/eval_testset", type=str)
     parser.add_argument("--ckpt_path", help="ckpt_path file path", type=str, default="cryoten.ckpt")
@@ -31,9 +32,10 @@ if __name__ == "__main__":
         os.makedirs(emdb_output_dir, exist_ok=True)
         output_map_path = os.path.join(emdb_output_dir, "cryoten_generated.mrc")
 
+        python_path = sys.executable
         result = subprocess.run(
             [
-                "python3",
+                python_path,
                 "eval.py",
                 "--ckpt_path="+ckpt_path,
                 map_path,

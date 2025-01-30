@@ -1,5 +1,5 @@
 # CryoTEN: Efficiently Enhancing Cryo-EM Density Maps using Transformers
-We introduce CryoTEN - a three-dimensional U-Net style transformer to improve cryo-EM maps effectively. CryoTEN is trained using a diverse set of 1,295 cryo-EM maps as inputs and their corresponding simulated maps generated from known protein structures as targets. An independent test set containing 150 maps is used to evaluate CryoTEN, and the results demonstrate that it can robustly enhance the quality of cryo-EM density maps. In addition, the automatic de novo protein structure modeling shows that the protein structures built from the density maps processed by CryoTEN have substantially better quality than those built from the original maps. Compared to the existing state-of-the-art deep learning methods for enhancing cryo-EM density maps, CryoTEN ranks second in improving the quality of density maps, while running >10 times faster and requiring much less GPU memory than them.
+We introduce CryoTEN - a three-dimensional UNETR++ style transformer to improve cryo-EM maps effectively. CryoTEN is trained using a diverse set of 1,295 cryo-EM maps as inputs and their corresponding simulated maps generated from known protein structures as targets. An independent test set containing 150 maps is used to evaluate CryoTEN, and the results demonstrate that it can robustly enhance the quality of cryo-EM density maps. In addition, the automatic de novo protein structure modeling shows that the protein structures built from the density maps processed by CryoTEN have substantially better quality than those built from the original maps. Compared to the existing state-of-the-art deep learning methods for enhancing cryo-EM density maps, CryoTEN ranks second in improving the quality of density maps, while running >10 times faster and requiring much less GPU memory than them.
 
 # Overview of CryoTEN
 ![Network Architecture](<Network-Architecture.png>)
@@ -12,9 +12,9 @@ cd cryoten
 ```
 ### Download the the trained model 
 ```
-wget https://zenodo.org/records/12693785/files/cryoten.ckpt
+wget https://zenodo.org/records/14736781/files/cryoten_v2.ckpt
 # or
-curl https://zenodo.org/records/12693785/files/cryoten.ckpt -o cryoten.ckpt
+curl https://zenodo.org/records/14736781/files/cryoten_v2.ckpt -o cryoten.ckpt
 ```
 ### Setup conda environment
 ```
@@ -87,7 +87,8 @@ results/
     deposited_half_map1_map_model_validation.csv - The model-map validation scores of experimental deposited half maps from our test set. (Only one of the half-map pair is evaluated)
     deposited_primary_maps_map_model_validation.csv - The model-map validation scores of experimental deposited primary maps from our test set.
     emready_primary_maps_map_model_validation.csv - The model-map validation scores of EMReady enhanced deposited primary maps from our test set.
-    structure_modelling_comparison.csv - Contains the sequence match and residue coverage percentages of models built for chains in deposited maps and CryoTEN enhanced maps.
+    phenix_map_to_model_structure_modelling_comparison.csv - Contains the sequence match and residue coverage percentages of models built for chains in deposited maps and CryoTEN enhanced maps using phenix.map_to_model.
+	mainmast_structure_modelling_comparison.csv - Contains the sequence match and residue coverage percentages of models built for chains in deposited maps and CryoTEN enhanced maps using mainmast.
 ```
 
 # Cite
