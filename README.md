@@ -92,14 +92,18 @@ results/
 ```
 
 # Cite
-@article {Selvaraj2024.09.06.611715,
-	author = {Selvaraj, Joel and Wang, Liguo and Cheng, Jianlin},
-	title = {CryoTEN: Efficiently Enhancing Cryo-EM Density Maps Using Transformers},
-	elocation-id = {2024.09.06.611715},
-	year = {2024},
-	doi = {10.1101/2024.09.06.611715},
-	publisher = {Cold Spring Harbor Laboratory},
-	URL = {https://www.biorxiv.org/content/early/2024/09/11/2024.09.06.611715},
-	eprint = {https://www.biorxiv.org/content/early/2024/09/11/2024.09.06.611715.full.pdf},
-	journal = {bioRxiv}
+```
+@article{10.1093/bioinformatics/btaf092,
+    author = {Selvaraj, Joel and Wang, Liguo and Cheng, Jianlin},
+    title = {CryoTEN: efficiently enhancing cryo-EM density maps using transformers},
+    journal = {Bioinformatics},
+    volume = {41},
+    number = {3},
+    pages = {btaf092},
+    year = {2025},
+    month = {02},
+    doi = {10.1093/bioinformatics/btaf092},
+    url = {https://doi.org/10.1093/bioinformatics/btaf092},
+    eprint = {https://academic.oup.com/bioinformatics/article-pdf/41/3/btaf092/62197510/btaf092.pdf},
 }
+```
